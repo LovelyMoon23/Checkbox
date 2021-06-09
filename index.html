@@ -1,0 +1,67 @@
+<style>
+    .check input {
+  display: none; /* 본래 나온느 체크박스는 안쓸 예정이므로 지운다*/
+}
+
+/* 체크박스 만들기 */
+.check .icon {
+  display: inline-block;
+  position: relative;
+  border: 10px solid #000;
+  border-radius: 5px;
+  width: 100px;
+  height: 100px;
+  cursor: pointer;
+  background-color: transparent;
+}
+
+/* 가상요소 공통부분 */
+.check .icon::before,
+.check .icon::after {
+  content: '';
+  position: absolute;
+  display: inline-block;
+  height: 0;
+  width: 20px;
+  background-color: ff1100;
+  transform-origin: left top;
+  border-radius: 5px;
+}
+
+/* ::after */
+.check .icon::before {
+  transform: rotate(-45deg);
+  top: 50px;
+  left: 12px;
+}
+
+/* ::after */
+
+.check .icon::after {
+  transform: rotate(-135deg);
+  top: 85px;
+  left: 48px;
+}
+/*check 된 이후 움직임 */
+
+.check input:checked ~ .icon {
+  border-color: #ff1100;
+}
+
+.check input:checked ~ .icon::before {
+  height: 50px;
+  transition: all 0.35s ease;
+}
+.check input:checked ~ .icon::after {
+  height: 120px;
+  transition: all 0.35s ease 0.35s;
+}
+
+</style>
+
+<div>
+    <label class="check">
+        <input type="checkbox">
+        <span class="icon"></span>
+    </label>
+</div>
